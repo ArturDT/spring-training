@@ -7,9 +7,9 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 import java.util.Optional;
 
-public interface AccountRepository extends JpaRepository<Account, Long> {
+public interface AccountRepository extends JpaRepository<Account, Long>, AccountRepositoryCustom {
 
-    Optional<Account> getByNumber(String accountNumber);
+    Optional<Account> getById(Long id);
 
     @Query("select a from Account a where a.balance >= :balance")
     List<Account> getAccountsWithBalance(@Param("balance") Long balance);
