@@ -37,7 +37,7 @@ public class HibernateAccountRepository implements AccountRepository {
     }
 
     @Override
-    public Optional<Account> getBy(String accountNumber) {
+    public Optional<Account> getByNumber(String accountNumber) {
         return sessionFactory.getCurrentSession()
                 .createQuery(SELECT_ACCOUNT_BY_NUMBER, Account.class)
                 .setParameter("number", accountNumber)

@@ -37,7 +37,7 @@ public class JpaAccountRepository implements AccountRepository {
     }
 
     @Override
-    public Optional<Account> getBy(String accountNumber) {
+    public Optional<Account> getByNumber(String accountNumber) {
         try {
             return Optional.of(entityManager
                     .createQuery(SELECT_ACCOUNT_BY_NUMBER, Account.class)
