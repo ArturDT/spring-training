@@ -50,7 +50,7 @@ public class JdbcAccountRepository implements AccountRepository {
     }
 
     @Override
-    public Optional<Account> getBy(String accountNumber) {
+    public Optional<Account> getByNumber(String accountNumber) {
         MapSqlParameterSource parameterSource = new MapSqlParameterSource("number", accountNumber);
         return jdbcTemplate.query(SELECT_ACCOUNT_BY_NUMBER, parameterSource, accountExtractor);
     }
