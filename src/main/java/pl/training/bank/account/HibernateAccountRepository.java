@@ -29,7 +29,7 @@ public class HibernateAccountRepository implements AccountRepository {
     @Override
     public ResultPage<Account> get(int pageNumber, int pageSize) {
         List<Account> accounts = sessionFactory.getCurrentSession()
-                .createQuery(SELECT_ACCOUNTS, Account.class)
+                .createNamedQuery(Account.SELECT_ACCOUNTS, Account.class)
                 .setFirstResult(pageNumber * pageSize)
                 .setMaxResults(pageSize)
                 .getResultList();
@@ -39,7 +39,7 @@ public class HibernateAccountRepository implements AccountRepository {
     @Override
     public Optional<Account> getByNumber(String accountNumber) {
         return sessionFactory.getCurrentSession()
-                .createQuery(SELECT_ACCOUNT_BY_NUMBER, Account.class)
+                .createNamedQuery(Account.SELECT_ACCOUNT_BY_NUMBER, Account.class)
                 .setParameter("number", accountNumber)
                 .uniqueResultOptional();
     }
